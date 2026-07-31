@@ -7,12 +7,38 @@ configDotenv()
 const app = express();
 const port = process.env.PUERTO || 2008
 
-app.get("/", (_, res) => {
+app.get("/", (req, res) => {
   res.send('Aprendiendo express, ficha 3407181, ADSO en el SENA 31 julio');
-});
-
+})
 //otro endpoint
+app.get("/otraruta", (req, res)=>{
+//usando template string
+res.send(`<h1>Otro ejemplo de ruta</h1
+  <h2>End point con res.send</h2>
+  `)
+})
 
-app.listen(port, () => { 
-    console.log( `Servidor en funcionamiento en el puerto: ${port}`); 
+app.get("/ruta2", (req, res)=>{
+  res.json({"Nombre": "Vanessa", "Apellido": "Ospitia", "Cargo": "Aprendiz"})
+})
+
+app.get("/ruta3:aprendiz/:otrodato", (req, res)=>{
+  const dato_aprendiz = req.params.aprendiz
+  const otro_dato = req.params.otrodato
+  res.json({"Nombre": dato_aprendiz, "Apellido": otro_dato})
+})
+
+app.get("/ruta4", (req, res)=>{
+//capturar la el parametro de consulta query
+  const orden = req.query.orden || "sin ordenar"
+  const pagina = req.query.pagina || 1
+  res.send(`<h1>Listado Aprendices</h1>
+  <p>El listado esta en orden ${orden}</p>
+  <p>Pagina: ${pagina}</p>
+  `)
+})
+
+
+app.listen(port, function(){ 
+    console.log( `SERVIDOR: http://localhost:${port}`); 
 });
