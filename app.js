@@ -23,6 +23,11 @@ app.get("/api/aprendices", (req, res)=> {
   })
 }) 
 
+//endpoin para crear aprendices
+app.post("/api/aprendices",(res, req)=>{
+  res.json({Mensaje: "trabajando en el endpoin"})
+})
+
 app.listen(port, () => {
-  console.log(`Servidor en funcionamiento en el puerto: ${port}`);
+  console.log(`Servidor en funcionamiento en el puerto: http://localhost:${port}`);
 });
