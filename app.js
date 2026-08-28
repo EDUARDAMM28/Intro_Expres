@@ -82,6 +82,17 @@ app.post("/login", (req, res) => {
         mensaje: "No tiene acceso. El perfil ingresado no es válido"
     })
 })
+
+
+app.post("/formulario,",(res, req)=>{
+  const datosForm = req.body
+  const miNombre = req.body.Nombre
+  const miApellido = req.body.Apellido
+  const cargo = req.body.Cargo
+  res.status(200).json({Mensaje : "datos resibidos", nombres: "miNombre", apellido:"miApellido", cargo:"Cargo"})
+})
+
+
 app.listen(port, function(){ 
     console.log( `SERVIDOR: http://localhost:${port}`); 
 });
