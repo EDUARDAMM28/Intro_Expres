@@ -22,5 +22,12 @@
     "name ": "Diego",
     "email": "gogo.@email",
     "perfil": "aprendiz"
+  },
+  {
+    "name ": "Eduard",
+    "correo": "MARTEDUARD@GMIAL.COM",
+    "perfil": "aprendiz",
+    "apellido": "martinez",
+    "imagen": "/misImagenes/1789141081282.avif"
   }
 ]
