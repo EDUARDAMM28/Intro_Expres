@@ -1,17 +1,26 @@
 [
-    {
-        "dni" : "1",
-        "nombre" : "Juan",
-        "apellido" : "Pérez" ,
-        "correo" : "juan.perez@example.com",
-        "imagen" : "foto.png"
-    },
-    {
-
-        "dni" : "2",
-        "nombre" : "Eduard",
-        "apellido" : "Martinez" ,
-        "correo" : "marteduard518@example.com",
-        "imagen" : "foto.png"
-    }
+  {
+    "dni": "1",
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "correo": "juan.perez@example.com",
+    "imagen": "foto.png"
+  },
+  {
+    "dni": "2",
+    "nombre": "Eduard",
+    "apellido": "Martinez",
+    "correo": "marteduard518@example.com",
+    "imagen": "foto.png"
+  },
+  {
+    "name ": "Eduard",
+    "email": "eduarmartinezmeza0728@gmail.com",
+    "perfil": "aprendiz"
+  },
+  {
+    "name ": "Diego",
+    "email": "gogo.@email",
+    "perfil": "aprendiz"
+  }
 ]
