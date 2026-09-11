@@ -29,5 +29,17 @@
     "perfil": "aprendiz",
     "apellido": "martinez",
     "imagen": "/misImagenes/1789141081282.avif"
+  },
+  {
+    "id": "1789143326015",
+    "nombre": "ed342",
+    "correo": "MARTEDUARD@GMIAL.COM",
+    "imagen": "/misImagenes/1789143326013.avif"
+  },
+  {
+    "id": "1789145299141",
+    "nombre": "Andres",
+    "correo": "Andres@gmail.com",
+    "imagen": "/misImagenes/1789145299137.jpg"
   }
 ]
