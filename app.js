@@ -8,11 +8,13 @@ const sistemaArchivo = require("fs"); // Importa el módulo 'fs' de Node.js para
 const ruta = require("path"); // Importa 'path' para gestionar rutas de archivos de forma segura
 const rutaArchivoJson = ruta.join(__dirname, "datos.json"); // Construye la ruta absoluta hacia el archivo 'datos.json'
 const multer = require("multer"); // Importa 'multer' para gestionar la subida de imágenes/archivos
-
+const jwt = require("jsonwebtoken")
 // 🔴 IMPORTACIÓN DE LAS VALIDACIONES (Punto 3 de la guía)
 const { validarNombre, validarCorreo, generarId } = require("./utilidades/validacion"); // Importa las 3 funciones del archivo validaciones.js
  // importacion de middleware
- const registroMiddleware = require("./middleware/registromiddleware")
+const registroMiddleware = require("./middleware/registromiddleware")
+const manejadorErrores = require("./middleware/manejadorErrores")
+const autenticarMiddleware = require("./middleware/autenticarMiddleware")
 
 
 // Configurar el almacenamiento de archivos con Multer
@@ -26,6 +28,7 @@ const almacenamiento = multer.diskStorage({
     }
 });
 const subirArchivo = multer({ storage: almacenamiento }); // Inicializa el middleware de Multer con la configuración previa
+
 
 
 // Middlewares para procesar la información entrante en las peticiones----------------------------------------------------------------
@@ -116,6 +119,36 @@ app.post("/api/aprendices", subirArchivo.single("imagen1"), (req, res) => {
         );
     });
 });
+
+
+app.get("/error", (req,res,next)=>{
+    next(new Error("Error intencional para probar."))
+})
+
+//uso del middelware de Errores
+app.use(manejadorErrores)
+
+//ruta protegida
+app.get("/rutaprotegida", autenticarMiddleware,(req,res)=>{
+    res.json({mensaje: "Esta ruta esta protegida"})
+})
+
+
+//endpoint iniciar sesion, generar 
+app.post("/login", (req, res)=>{
+    const {usuario, clave} = req.body
+    const usuariodb = {"user" : "Eduard", "clave":"eduard515"}
+
+    if(usuario !== usuariodb.user || clave !== usuariodb.clave){
+        res.json({mensaje: "Credenciales incorrectas"})
+    }
+
+    //gerera token 
+    const token = jwt.sign({usuario: usuario}, process.env.JWT_SECRETO,{expiresIn: "2h"})
+    res.json({token : token })
+
+})
+
 
 // Iniciar y poner a escuchar el servidor Express
 app.listen(port, function() {
