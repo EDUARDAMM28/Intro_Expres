@@ -10,11 +10,11 @@ const rutaArchivoJson = ruta.join(__dirname, "datos.json"); // Construye la ruta
 const multer = require("multer"); // Importa 'multer' para gestionar la subida de imágenes/archivos
 const jwt = require("jsonwebtoken")
 // 🔴 IMPORTACIÓN DE LAS VALIDACIONES (Punto 3 de la guía)
-const { validarNombre, validarCorreo, generarId } = require("./utilidades/validacion"); // Importa las 3 funciones del archivo validaciones.js
+const { validarNombre, validarCorreo, generarId } = require("./src/utilidades/validacion"); // Importa las 3 funciones del archivo validaciones.js
  // importacion de middleware
-const registroMiddleware = require("./middleware/registromiddleware")
-const manejadorErrores = require("./middleware/manejadorErrores")
-const autenticarMiddleware = require("./middleware/autenticarMiddleware")
+const registroMiddleware = require("./src/middleware/registromiddleware")
+const manejadorErrores = require("./src/middleware/manejadorErrores")
+const autenticarMiddleware = require("./src/middleware/autenticarMiddleware")
 
 
 // Configurar el almacenamiento de archivos con Multer
